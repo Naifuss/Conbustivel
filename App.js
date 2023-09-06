@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text, TextInput, Button } from 'react-native';
+import {StyleSheet, View, Text, TextInput, Button } from 'react-native';
 
 class CalculadoraCombustivel extends Component {
   constructor(props) {
@@ -22,42 +22,74 @@ class CalculadoraCombustivel extends Component {
   };
 
   render() {
+    const limparHandle = ()=>{
+      precoLitro(' ');
+      quantidadeAbastecida(' ');
+      quilometrosPercorridos(' ');
+      resultado(' ')
+  
+    };
     return (
       <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-        <Text>Preço por Litro:</Text>
-        <TextInput
-          onChangeText={(precoLitro) => this.setState({ precoLitro })}
-          value={this.state.precoLitro}
-          keyboardType="numeric"
-          placeholder="Digite o preço por litro"
-        />
+         <View style={styles.content}>
+          <Text style={styles.texto}>Preço por Litro:</Text>
+          <TextInput
+            onChangeText={(precoLitro) => this.setState({ precoLitro })}
+            value={this.state.precoLitro}
+            keyboardType="numeric"
+            placeholder="Digite o preço por litro"
+          />
 
-        <Text>Quantidade Abastecida (litros):</Text>
-        <TextInput
-          onChangeText={(quantidadeAbastecida) => this.setState({ quantidadeAbastecida })}
-          value={this.state.quantidadeAbastecida}
-          keyboardType="numeric"
-          placeholder="Digite a quantidade abastecida"
-        />
+          <Text style={styles.texto}>Quantidade Abastecida (litros):</Text>
+          <TextInput
+            onChangeText={(quantidadeAbastecida) => this.setState({ quantidadeAbastecida })}
+            value={this.state.quantidadeAbastecida}
+            keyboardType="numeric"
+            placeholder="Digite a quantidade abastecida"
+          />
 
-        <Text>Quilômetros Percorridos:</Text>
-        <TextInput
-          onChangeText={(quilometrosPercorridos) => this.setState({ quilometrosPercorridos })}
-          value={this.state.quilometrosPercorridos}
-          keyboardType="numeric"
-          placeholder="Digite os quilômetros percorridos"
-        />
+          <Text style={styles.texto}>Quilômetros Percorridos:</Text>
+          <TextInput
+            onChangeText={(quilometrosPercorridos) => this.setState({ quilometrosPercorridos })}
+            value={this.state.quilometrosPercorridos}
+            keyboardType="numeric"
+            placeholder="Digite os quilômetros percorridos"
+          />
 
-        <Button title="Calcular" onPress={this.calcularCustoCombustivel} />
+          <Button title="Calcular" onPress={this.calcularCustoCombustivel} />
 
-        {this.state.resultado > 0 && (
-          <Text style={{ marginTop: 20 }}>
-            Custo por quilômetro: R$ {this.state.resultado}
-          </Text>
-        )}
+          {this.state.resultado > 0 && (
+            <Text style={{ marginTop: 20 }}>
+              Custo por quilômetro: R$ {this.state.resultado}
+            </Text>
+          )}
+          
+        </View>
       </View>
     );
   }
 }
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: '#000000',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  content: {
+    padding: 16,
+    backgroundColor:'#fff',
+  },
+  botao: {
+    backgroundColor: '#2ECC71',
+    paddingVertical: 12,
+    paddingHorizontal: 24,
+    padding: 10,
 
+  },
+  texto:{
+    fontSize: 20,
+  },
+
+})
 export default CalculadoraCombustivel;
