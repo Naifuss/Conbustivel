@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {StyleSheet, View, Text, TextInput, Button } from 'react-native';
+import {StyleSheet, View, Text, TextInput, Button, Pressable } from 'react-native';
 
 class CalculadoraCombustivel extends Component {
   constructor(props) {
@@ -22,13 +22,6 @@ class CalculadoraCombustivel extends Component {
   };
 
   render() {
-    const limparHandle = ()=>{
-      precoLitro(' ');
-      quantidadeAbastecida(' ');
-      quilometrosPercorridos(' ');
-      resultado(' ')
-  
-    };
     return (
       <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
          <View style={styles.content}>
@@ -63,6 +56,7 @@ class CalculadoraCombustivel extends Component {
               Custo por quilômetro: R$ {this.state.resultado}
             </Text>
           )}
+          
           
         </View>
       </View>
